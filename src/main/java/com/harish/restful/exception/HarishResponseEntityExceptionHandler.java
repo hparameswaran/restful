@@ -25,10 +25,10 @@ public class HarishResponseEntityExceptionHandler extends ResponseEntityExceptio
 	}
 	
 	@ExceptionHandler(UserNotFoundException.class)
-	public final ResponseEntity<Object> handleUserNotFoundExceptions(Exception ex, WebRequest request){
+	public final ResponseEntity<Object> handleUserNotFoundExceptions(UserNotFoundException ex, WebRequest request){
 		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
 		
-		return new ResponseEntity(exceptionResponse,HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity(exceptionResponse,HttpStatus.NOT_FOUND);
 		
 		
 	}
